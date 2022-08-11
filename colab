@@ -142,7 +142,7 @@ miner_eth(){
   read -p "user minig [worker]:" k_user
           k_user=${k_user:-'t4'}
   read -p "wallet [koske]:" k_wallet
-          k_wallet=${k_wallet:-'3CgmKYspkYpy5NnaPMFirG9U4XZhFoyzmM'}
+          k_wallet=${k_wallet:-'0xba85f8631b56436cb45118c83f048d3062511a8e'}
   read -p "algo [ETHASH]:" k_algo
           k_algo=${k_algo:-'ETHASH'}
   walletstart="./1.42/lolMiner --algo $_algo --pool $k_pool --user $k_wallet"
